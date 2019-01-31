@@ -1,0 +1,2 @@
+# Disable org mode intermediate files
+*.tex
