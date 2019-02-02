@@ -16,7 +16,6 @@ all: $(OUTPUT_PDFS)
 		--variable fontsize=11pt \
 		--variable date:"\today" \
 		--variable geometry:a4paper \
-		--variable options:"author:nil"
 		--variable documentclass:book \
 		--table-of-contents \
 		--number-sections \
