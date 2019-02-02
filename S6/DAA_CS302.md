@@ -1,8 +1,6 @@
 ---
 title: Design and Analysis of Algorithms
 subtitle: KTU S6 CSE CS302
-author:
-- Aswin Mohan
 ---
 # Algorithm Analysis Techniques 
 ## Syllabus

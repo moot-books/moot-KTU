@@ -1,8 +1,6 @@
 ---
-title: Design and Analysis of Algorithms
-subtitle: KTU S6 CSE CS302
-author:
-- Aswin Mohan
+title: Compiler Design
+subtitle: KTU S6 CSE CS304
 ---
 
 # Introduction to Compilers and Lexical Analysis
