@@ -1,11 +1,6 @@
 ---
 title: Design and Analysis of Algorithms
 subtitle: KTU S6 CSE CS302
-documentclass: extarticle
-fontsize: 12pt
-options: H:2 num:nil toc:nil author:nil \n:nil @:t ::t |:t ^:{} _:{} *:t TeX:t LaTeX:t
-header-includes: \usepackage{fullpage}
-date: \today
 ---
 # Module I 
 ## Syllabus
