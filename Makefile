@@ -13,7 +13,7 @@ all: $(OUTPUT_PDFS)
 # Recipe for converting a Markdown file into PDF using Pandoc
 %.pdf: %.md
 	pandoc \
-		--variable fontsize=11pt \
+		--variable fontsize=12pt \
 		--variable date:"\today" \
 		--variable geometry:a4paper \
 		--variable documentclass:book \
