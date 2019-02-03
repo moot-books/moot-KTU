@@ -19,6 +19,7 @@ all: $(OUTPUT_PDFS)
 		--variable documentclass:book \
 		--table-of-contents \
 		--number-sections \
+		--filter pandoc-fignos \
 		-f markdown  $< \
 		-o $@
 
