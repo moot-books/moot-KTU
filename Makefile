@@ -7,11 +7,19 @@
 # All markdown files are considered sources
 MD_SOURCES := $(wildcard **/*.md)
 OUTPUT_PDFS := $(MD_SOURCES:.md=.pdf)
+DOT_SOURCES := $(wildcard */*/*.dot)
+OUTPUT_DOTPNGS := $(DOT_SOURCES:.dot=.png)
 
-all: $(OUTPUT_PDFS)
+all: $(OUTPUT_PDFS) 
+
+# Recipe for building png files from dot files
+%.png: %.dot
+	dot \
+		-Tpng $< \
+		-o $@
 
 # Recipe for converting a Markdown file into PDF using Pandoc
-%.pdf: %.md
+%.pdf: %.md $(OUTPUT_DOTPNGS)
 	pandoc \
 		--variable fontsize=12pt \
 		--variable date:"\today" \
@@ -23,7 +31,8 @@ all: $(OUTPUT_PDFS)
 		-f markdown  $< \
 		-o $@
 
+
 .PHONY : clean
 
-clean: $(OUTPUT_PDFS)
-	$(RM) -f $^
+clean: $(OUTPUT_PDFS) $(OUTPUT_DOTPNGS)
+	$(RM) $^

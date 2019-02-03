@@ -1,0 +1,3 @@
+digraph compilerphases {
+  "Skeleton Source Program" -> "Preprocessor"->  "Source Program"->  "Compiler"->  "Assembly Code"->  "Assembler"->  "Relocatable Machine Code"->  "Loader / Linker"->  "Executable Machine Code"
+}
