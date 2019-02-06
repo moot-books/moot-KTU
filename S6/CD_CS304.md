@@ -29,9 +29,9 @@ Alongside conversion it also reports any errors that occur during the transalati
 | Errors are displayed after entire program is processed   | Errors are displayed after each instruction                          |
 | eg: C, C++ are compiled languages                        | eg: Python, Ruby are interpreted languages                           |
 
-#### Phases of a Compiler
+## Phases of a Compiler
 The compiler converts the program while going through different phases of transformations. See +@fig:compilerphases
 
-![Phases of Compiler](S6/graphviz/cs304_compilerphases.png){#fig:compilerphases}
+![Phases of Compiler](S6/graphs/cs304_compilerphases.png){#fig:compilerphases}
 
-## Lexical Analysis
+### Lexical Analysis

@@ -12,11 +12,6 @@ OUTPUT_DOTPNGS := $(DOT_SOURCES:.dot=.png)
 
 all: $(OUTPUT_PDFS) 
 
-# Recipe for building png files from dot files
-%.png: %.dot
-	dot \
-		-Tpng $< \
-		-o $@
 
 # Recipe for converting a Markdown file into PDF using Pandoc
 %.pdf: %.md $(OUTPUT_DOTPNGS)
@@ -31,6 +26,11 @@ all: $(OUTPUT_PDFS)
 		-f markdown  $< \
 		-o $@
 
+# Recipe for building png files from dot files
+%.png: %.dot
+	dot \
+		-Tpng $< \
+		-o $@
 
 .PHONY : clean
 
