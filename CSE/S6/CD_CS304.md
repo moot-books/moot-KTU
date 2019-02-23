@@ -34,4 +34,16 @@ The compiler converts the program while going through different phases of transf
 
 ![Phases of Compiler](CSE/S6/graphs/cs304_compilerphases.png){#fig:compilerphases}
 
-### Lexical Analysis
+## Lexical Analysis
+### The role of Lexical Analyzer
+### Input Buffering
+### Specification of Tokens using Regular Expressions
+### Review of Finite Automata
+### Recognition of Tokens.
+
+# Syntax Analysis And Top-Down Parsing
+# Bottom Up Parsing
+# Syntax Generated Transalation
+# Environment and Intermediate Code Generation
+# Code Optimization and Generation
+
