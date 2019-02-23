@@ -46,4 +46,3 @@ The compiler converts the program while going through different phases of transf
 # Syntax Generated Transalation
 # Environment and Intermediate Code Generation
 # Code Optimization and Generation
-
