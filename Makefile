@@ -5,9 +5,9 @@
 # - Pandoc
 
 # All markdown files are considered sources
-MD_SOURCES := $(wildcard **/*.md)
+MD_SOURCES := $(wildcard */*/*.md)
 OUTPUT_PDFS := $(MD_SOURCES:.md=.pdf)
-DOT_SOURCES := $(wildcard */*/*.dot)
+DOT_SOURCES := $(wildcard */*/*/*.dot)
 OUTPUT_DOTPNGS := $(DOT_SOURCES:.dot=.png)
 
 all: $(OUTPUT_PDFS) 
