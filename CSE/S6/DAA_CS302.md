@@ -69,3 +69,54 @@ It measures the growth rate of algorithms w.r.t to its input size.
 * Big Oh $O$
 * Big Omega $\Omega$
 * Big Theta $\Theta$
+
+### Big Oh $O$
+Big O notation is used in Computer Science to describe the performance or complexity of an algorithm. Big O specifically describes the worst-case scenario, and can be used to describe the execution time required or the space used (e.g. in memory or on disk) by an algorithm.
+
+$$f(n) = O(g(n))$$
+if there exists +ve constants $c$ and $n_0$ such that $f(n) \leq c.g(n)$ for all the values of n greater than some $n_0$. c is any constant
+
+### Big Omega $\Omega$
+Sometimes, we want to say that an algorithm takes at least a certain amount of time, without providing an upper bound. We use big-$\Omega$ notation; that's the Greek letter "omega."
+
+If a running time is $\Omega(f(n))$, then for large enough $n$, the running time is at least $k \cdot f(n)$  for some constant $k$. 
+
+### Big Theta $\Theta$
+ Big Omega tells us the lower bound of the runtime of a function, and Big O tells us the upper bound. Often times, they are different and we can’t put a guarantee on the runtime - it will vary between the two bounds and the inputs. But what happens when they’re the same? Then we can give a theta $(\Theta)$ bound - our function will run in that time, no matter what input we give it. 
+ 
+ In general, we always want to give a theta bound if possible because it is the most accurate and tightest bound. If we can’t give a theta bound, the next best thing is the tightest O bound possible.
+
+For an algorithm there are three cases
+
+* Worst Case : It is the maximum time taken by an algorithm to run to it's completion, denoted by $O$.
+
+* Best Case : It is the minimum time taken by an algorithm to run to it's completion, denoted by $\Omega$.
+
+* Average Case : It is the average time taken by an algorithm to run to it's completion, denoted by $\Theta$.
+
+### Linear Search
+Consider the algorithm for Linear Search
+
+```
+  for(i=0; i<n; ++i) {
+    if a[i] == key
+      element found
+      break
+  }
+```
+Let us consider the different cases that might occur when we search for an element in a string using linear search
+
+* Element is first in the list :The algorithm finishes in constant time of 1
+
+* Element is last in the list : The algorithm goes through the entire list and the complexity grows linearly with the input
+
+* Element is at a random position 
+
+\begin{align}
+Best\ Case &= \Theta(1) \\
+Worst\ Case &= O(n) \\
+Average\ Case &= \frac{1+2+3+\dots+n+n}{n+1} \\
+              &= \frac{n+n\frac{(n+1)}{2}}{n+1} = \Theta(n) \\
+              &= \frac{n}{n+1} + \frac{n}{2} \\
+              &= \Theta(n)
+\end{align}
