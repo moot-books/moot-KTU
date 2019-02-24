@@ -2,6 +2,7 @@ before_install:
 - sudo apt-get update -qq
 - sudo apt-get install -y python3-pip 
 - sudo apt-get install -y pandoc
+- sudo apt-get install -y graphviz
 - sudo apt-get install -y texlive-full
 - pip install --user pandoc-fignos
 - chmod u+x ./travis/build.sh
