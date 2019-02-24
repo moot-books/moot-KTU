@@ -4,7 +4,7 @@ before_install:
 - sudo apt-get install -y pandoc
 - sudo apt-get install -y texlive-full
 - sudo apt-get install -y texlive-xetex
-- pip install -u pandoc-fignos
+- pip install --user pandoc-fignos
 - chmod u+x ./travis/build.sh
 
 script: "./travis/build.sh"
