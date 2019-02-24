@@ -1,8 +1,10 @@
 before_install:
 - sudo apt-get update -qq
+- sudo apt-get install -y python3-pip 
 - sudo apt-get install -y pandoc
 - sudo apt-get install -y texlive-full
 - sudo apt-get install -y texlive-xetex
+- pip install -u pandoc-fignos
 - chmod u+x ./travis/build.sh
 
 script: "./travis/build.sh"
