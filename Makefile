@@ -20,6 +20,7 @@ all: $(OUTPUT_PDFS)
 		--variable date:"\today" \
 		--variable geometry:a4paper \
 		--variable documentclass:book \
+		--pdf-engine=pdflatex \
 		--table-of-contents \
 		--number-sections \
 		--filter pandoc-fignos \
