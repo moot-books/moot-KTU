@@ -1,9 +1,10 @@
 before_install:
 - sudo apt-get update -qq
 - sudo apt-get install -y python3-pip 
-- sudo apt-get install -y pandoc
 - sudo apt-get install -y graphviz
 - sudo apt-get install -y texlive-full
+- wget https://github.com/jgm/pandoc/releases/download/2.6/pandoc-2.6-1-amd64.deb
+- yes | sudo dpkg -i pandoc-2.6-1-amd64.deb
 - pip install --user pandoc-fignos
 - chmod u+x ./travis/build.sh
 
