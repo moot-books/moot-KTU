@@ -1,6 +1,8 @@
 before_install:
 - sudo apt-get update -qq
 - sudo apt-get install -y python3-pip 
+- sudo apt-get install -y ruby
+- gem install rake
 - sudo apt-get install -y graphviz
 - sudo apt-get install -y texlive-full
 - wget https://github.com/jgm/pandoc/releases/download/2.6/pandoc-2.6-1-amd64.deb
@@ -8,4 +10,4 @@ before_install:
 - pip install --user pandoc-fignos
 - chmod u+x ./travis/build.sh
 
-script: "./travis/build.sh"
+script: "rake"
