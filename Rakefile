@@ -1,5 +1,10 @@
-# Convert all markdown files to PDF
+#
+# Rake build file for building PDF books from markdown files 
+
+require 'rake/clean'
+
 MD_SOURCES = Rake::FileList.new("**/*.md")
+MD_SOURCES.exclude("README.md")
 DOT_SOURCES = Rake::FileList.new("**/*.dot")
 
 task :default => :output_pdfs
@@ -18,7 +23,11 @@ rule ".pdf" => ".md" do |t|
      "-f markdown #{t.source} " \
      "-o #{t.name}"
 end
+CLOBBER.include(MD_SOURCES.ext(".pdf"))
 
 rule ".png" => ".dot" do |t| 
   sh "dot -Tpng #{t.source} -o #{t.name}"
 end
+CLOBBER.include(DOT_SOURCES.ext(".png"))
+
+CLEAN.include(Rake::FileList.new('tex2pdf.*'))
