@@ -74,7 +74,8 @@ It measures the growth rate of algorithms w.r.t to its input size.
 Big O notation is used in Computer Science to describe the performance or complexity of an algorithm. Big O specifically describes the worst-case scenario, and can be used to describe the execution time required or the space used (e.g. in memory or on disk) by an algorithm.
 
 $$f(n) = O(g(n))$$
-if there exists +ve constants $c$ and $n_0$ such that $f(n) \leq c.g(n)$ for all the values of n greater than some $n_0$. c is any constant
+
+if there exists +ve constants $c$ and $n0$ such that $f(n) \leq c \cdot g(n)$ for all the values of n greater than some $n0$. c is any constant
 
 ### Big Omega $\Omega$
 Sometimes, we want to say that an algorithm takes at least a certain amount of time, without providing an upper bound. We use big-$\Omega$ notation; that's the Greek letter "omega."
@@ -112,7 +113,6 @@ Let us consider the different cases that might occur when we search for an eleme
 
 * Element is at a random position 
 
-$$
 \begin{align}
 Best\ Case &= \Theta(1) \\
 Worst\ Case &= O(n) \\
@@ -121,4 +121,3 @@ Average\ Case &= \frac{1+2+3+\dots+n+n}{n+1} \\
               &= \frac{n}{n+1} + \frac{n}{2} \\
               &= \Theta(n)
 \end{align}
-$$
