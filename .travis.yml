@@ -8,6 +8,5 @@ before_install:
 - wget https://github.com/jgm/pandoc/releases/download/2.6/pandoc-2.6-1-amd64.deb
 - yes | sudo dpkg -i pandoc-2.6-1-amd64.deb
 - pip install --user pandoc-fignos
-- chmod u+x ./travis/build.sh
 
 script: "rake"
