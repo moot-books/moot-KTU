@@ -13,12 +13,7 @@ before_install:
 script: rake
 
 deploy:
-  provider: releases
+  provider: surge
+  project: ./BOOKS/
   skip_cleanup: true
-  overwrite: true
-  api_key:
-    secure: Jf8mnuNJe7TMg6nh6yyyFAVl56NmKbYAqi4fGsGNgU1UddG2wlLEiaST0QZV3gHWOfbcUOa8A2wi/Rw3wO3REXIGj+niOV73CvEH5w5MArZKOIkpvdetM0zwA+w2yBZxle5lyzw+F2i0hDt/s7cq6Ai8mnjCEBMRfQ6JxI0OmGWazJDOHOUnuM6W4jVLzRvyz4Gsw3fytIafwUzoA3coI5cXk5Sy2fpsMYJTAzfVF5qcayFack5sYt1L7A0ivoBUi3+nT4fWthuSlGwmPCGkC/IIvhybYCOkh1W9JGKGJJqOQu1j92je3mo5siVygS1c72j2WcpLBzvekIwgZ8bCsDZl6d4RzZebYPr8DTyk33GXf5VPXv1nKP+bITgW+GEFELkoqY9GoSrUCq9zsalcAF9J6OIvTeZQT0AGxDAVlvYAH40ZAUouKVg5helPR8W8EkGgLx1LH9Q9Im73+fu3AogAITBaB5QO/QaygDJAP1+c10ZlWQrtCDQ6qd2Ug6Fq1a4Qw7IVj5dkPWAbPe0sWR/XijSQwrcxr6VPTA9C1UpI5kklKWcsiUqSizg40sHBJiuAu8tfBGcxwycA00E1HuMfp0vUPFU9OEb3KRdLDC7J8p1bWtLB5UskEBzG72ybPqIwRuiiV+eR9badIjeCjXD7xzAnfxvF3mQ/NnIQLd8=
-  file: BOOKS/**/*
-  file_glob: true
-  on:
-    repo: moot-books/moot-KTU
+  domain: moot-books-ktu.surge.sh
