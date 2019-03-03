@@ -3,6 +3,7 @@ before_install:
 - sudo apt-get update -qq
 - sudo apt-get install -y python3-pip
 - sudo apt-get install -y ruby
+- sudo apt-get install -y tree
 - gem install rake
 - sudo apt-get install -y graphviz
 - sudo apt-get install -y texlive-full
