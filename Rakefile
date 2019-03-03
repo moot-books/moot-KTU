@@ -8,10 +8,14 @@ MD_SOURCES.exclude("README.md")
 DOT_SOURCES = Rake::FileList.new("**/*.dot")
 
 task :default => :output_pdfs
-task :output_pdfs => [:output_dotpngs, MD_SOURCES.ext(".pdf")].flatten
+task :output_pdfs => [:output_dotpngs, :pdfs].flatten
+task :pdfs => MD_SOURCES.pathmap("BOOKS/%X.pdf")
 task :output_dotpngs => DOT_SOURCES.ext(".png")
 
-rule ".pdf" => ".md" do |t|
+directory "BOOKS"
+
+rule ".pdf" => [->(f){source_for_pdf(f)}, "BOOKS"] do |t|
+  mkdir_p t.name.pathmap("%d")
   sh 'pandoc ' \
      '--variable fontsize=12pt ' \
      '--variable date:"\today" ' \
@@ -23,11 +27,17 @@ rule ".pdf" => ".md" do |t|
      "-f markdown #{t.source} " \
      "-o #{t.name}"
 end
-CLOBBER.include(MD_SOURCES.ext(".pdf"))
+CLOBBER.include('BOOKS')
 
 rule ".png" => ".dot" do |t| 
   sh "dot -Tpng #{t.source} -o #{t.name}"
 end
 CLOBBER.include(DOT_SOURCES.ext(".png"))
+
+def source_for_pdf(pdf_file)
+  MD_SOURCES.detect { |f|
+    f.ext('') == pdf_file.pathmap("%{^BOOKS/}X")
+  }
+end
 
 CLEAN.include(Rake::FileList.new('tex2pdf.*'))
