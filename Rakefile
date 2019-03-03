@@ -1,5 +1,9 @@
 #
 # Rake build file for building PDF books from markdown files 
+# Running rake
+# * Builds png from dot files
+# * Builds pdf from md files
+# * Copies the pdf files to the BOOKS folder with same structure
 
 require 'rake/clean'
 
@@ -16,16 +20,19 @@ directory "BOOKS"
 
 rule ".pdf" => [->(f){source_for_pdf(f)}, "BOOKS"] do |t|
   mkdir_p t.name.pathmap("%d")
-  sh 'pandoc ' \
-     '--variable fontsize=12pt ' \
-     '--variable date:"\today" ' \
-     '--variable geometry:a4paper ' \
-     '--variable documentclass:book ' \
-     '--table-of-contents ' \
-     '--number-sections ' \
-     '--filter pandoc-fignos ' \
-     "-f markdown #{t.source} " \
-     "-o #{t.name}"
+  Dir.chdir(t.source.pathmap("%d")) do
+    sh 'pandoc ' \
+      '--variable fontsize=12pt ' \
+      '--variable date:"\today" ' \
+      '--variable geometry:a4paper ' \
+      '--variable documentclass:book ' \
+      '--table-of-contents ' \
+      '--number-sections ' \
+      '--filter pandoc-fignos ' \
+      "-f markdown #{t.source.pathmap('%f')} " \
+      "-o #{t.name.pathmap('%f')}"
+  end
+  FileUtils.mv(t.source.ext('.pdf'),t.name)
 end
 CLOBBER.include('BOOKS')
 

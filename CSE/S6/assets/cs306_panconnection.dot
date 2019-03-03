@@ -1,0 +1,5 @@
+digraph compilerphases {
+  PC -> Mouse;
+  PC -> Keyboard;
+  PC -> Speakers;
+}

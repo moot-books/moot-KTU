@@ -51,8 +51,46 @@ Classification of networks based on scale and distance
 | 10,000 Km | Planet          | Internet |
 
 ### Personal Area Network (PAN)
-PAN are mainly set up for single person use.
+PAN are mainly set up for single person use. It consititues of basic devices interacting with a master device.
+
+* Uses master slave paradigm
+* PC acts as the master connecting the keyboard, mouse as slaves. 
+
+![Master Slave Diagram](assets/cs306_panconnection.png){#fig:panconnection width=50%}
 
 ### LAN 
+Local Area Networks provide network access within closed areas such as single buildings. They are used to connect local workstations in company offices and factories to interconnect local devices and to exchange information.
+
+LAN's are distinguished from other kinds of networks by three characteristics
+
+1. Size
+2. Transmission Technology
+3. Topology
+
+LAN's are restricted in size to single buildings. They are also called enterprise network. 
+
+Here the network may be arranged in any one of the following topologies.
+
+**Bus Topology** : Every machine is connected to all other machines through a single bus line. Only a single machine can transmit at a time. When one machine is transmitting all other machines should only be listening.
+
+![Bus Topology](assets/cs306_bustopology.png){#fig:bustopology width=50%}
+
+**Ring Topology** : A ring network is a network topology in which each node connects to exactly two other nodes, forming a single continuous pathway for signals through each node - a ring. Data travels from node to node, with each node along the way handling every packet.
+
+![Ring Topology](assets/cs306_ringtopology.png){#fig:bustopology width=50%}
+
 ### MAN
+A metropolitan area network (MAN) is a computer network that interconnects users with computer resources in a geographic area or region larger than that covered by even a large local area network (LAN) but smaller than the area covered by a wide area network (WAN). 
+
+![MAN Network](assets/cs306_mannetwork.png){#fig:mannetwork width=30%}
+
+It has a range of 5 to 50 kilometres.
+
 ### WAN
+A wide area network (WAN) is a network that exists over a large-scale geographical area. A WAN connects different smaller networks, including local area networks (LANs) and metro area networks (MANs). This ensures that computers and users in one location can communicate with computers and users in other locations.
+
+### Internetwork
+Collection of Interconnected networks is called an Internetwork or Internet.
+
+Gateways are machines that make connections between two or more networks, and provide neccesary transalation both in terms of hardware and software.
+
