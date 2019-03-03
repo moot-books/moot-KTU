@@ -75,7 +75,7 @@ Big O notation is used in Computer Science to describe the performance or comple
 
 $$f(n) = O(g(n))$$
 
-if there exists +ve constants $c$ and $n0$ such that $f(n) \leq c \cdot g(n)$ for all the values of n greater than some $n0$. c is any constant
+if there exists +ve constants $c$ and $n_0$ such that $f(n) \leq c \cdot g(n)$ for all the values of n greater than some $n_0$. c is any constant
 
 ### Big Omega $\Omega$
 Sometimes, we want to say that an algorithm takes at least a certain amount of time, without providing an upper bound. We use big-$\Omega$ notation; that's the Greek letter "omega."
