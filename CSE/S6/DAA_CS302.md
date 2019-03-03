@@ -112,6 +112,7 @@ Let us consider the different cases that might occur when we search for an eleme
 
 * Element is at a random position 
 
+$$
 \begin{align}
 Best\ Case &= \Theta(1) \\
 Worst\ Case &= O(n) \\
@@ -120,3 +121,4 @@ Average\ Case &= \frac{1+2+3+\dots+n+n}{n+1} \\
               &= \frac{n}{n+1} + \frac{n}{2} \\
               &= \Theta(n)
 \end{align}
+$$
