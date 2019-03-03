@@ -94,3 +94,33 @@ Collection of Interconnected networks is called an Internetwork or Internet.
 
 Gateways are machines that make connections between two or more networks, and provide neccesary transalation both in terms of hardware and software.
 
+## Network Software
+The first computer networks were designed with the hardware as the main concern and the software as an afterthought. This strategy no longer works. Network software is now highly structured.
+
+### Protocols
+In computer networks, communication occurs between entities in different systems. An entity is anything capable of sending or receiving information. However, two entities cannot simply send bit streams to each other and expect to be understood. For communication to occur, the entities must agree on a protocol. 
+
+A protocol is a set of rules that govern data communications. A protocol defines what is communicated, how it is communicated, and when it is communicated. The key elements of a protocol are syntax, semantics, and timing.
+
+### Protocol Hierarchies
+To reduce their design complexity, most networks are organized as a stack of layers or levels, each one built upon the one below it. The number of layers, the name of each layer, the contents of each layer, and the function of each layer differ from network to network. 
+
+The purpose of each layer is to offer certain services to the higher layers, shielding those layers from the details of how the offered services are actually implemented. layer N on one machine carries on a conversation with layer N on another machine. The rules and conventions used in this conversation are collectively known as the layer N protocol. 
+
+![Layered Network Artitecture](assets/cs306_layerednetwork.png){#fig:layerednetwork width=70%}
+
+In order to understand how the actual communication is achieved between two remote hosts connected to the same network, a general network diagram {@fig:layerednetwork} is shown above divided into a series of layers. As it seen later on the on the course the actual number as well as their function of each layer differs from network to network.
+
+Each layer passes data and control information to the layer below It. As soon as the data are collected form the next layer, some functions are performed there and the data are upgraded and passed to the next layer. This continues until the lowest layer is reached. Actual communication occurs when the information passes layer 1 and reaches the Physical medium. This is shown with the solid lines on the diagram. Theoretically layer N on one machine maintains a conversation with the same layer in the other machine. The way this conversation is achieved is by the protocol of each layer. 
+
+Protocol is collection of rules and conventions as agreement between the communication parties on how communication is to proceed. The latter is known as virtual communication and is indicated with the dotted lines on the diagram above.
+
+layer N of one machine carries a conversion with the layer N of another machine. The rules and conversion are collectively known as protocol. Entities comprising layers of different machine is called peer process. 
+
+The data and information is passed by each layer to the lower layer. When the lower layer is reached it is passed to the physical medium which actual communication occurs. Between the pair of adjacent layer their lies the interface. The interface defines which type of services the lower layer offers to the upper layer.
+
+Protocols are together called **Protocol Stack** or set of protocols.
+
+As far as the above diagram is concerned another important issue to be discussed is the interface between each layer. It defines the services and operation the lower layer offers to the one above It. When a network is built decisions are made to decide how many layers to be included and what each layer should do. So each layer performs a different function and as a result the amount of information past from layer to layer is minimized. 
+
+### Design Issues for a layer
