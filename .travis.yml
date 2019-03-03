@@ -22,4 +22,3 @@ deploy:
   file_glob: true
   on:
     repo: moot-books/moot-KTU
-    tags: true
