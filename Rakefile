@@ -11,12 +11,20 @@ MD_SOURCES = Rake::FileList.new("**/*.md")
 MD_SOURCES.exclude("README.md")
 DOT_SOURCES = Rake::FileList.new("**/*.dot")
 
-task :default => :output_pdfs
+task :default => [:output_pdfs, :index_html]
 task :output_pdfs => [:output_dotpngs, :pdfs].flatten
 task :pdfs => MD_SOURCES.pathmap("BOOKS/%X.pdf")
 task :output_dotpngs => DOT_SOURCES.ext(".png")
 
 directory "BOOKS"
+
+# Create an Index file for surge to display
+task :index_html => "BOOKS/index.html"
+file "BOOKS/index.html" do
+  Dir.chdir("BOOKS") do
+    sh 'tree -H . > index.html'
+  end
+end
 
 rule ".pdf" => [->(f){source_for_pdf(f)}, "BOOKS"] do |t|
   mkdir_p t.name.pathmap("%d")
