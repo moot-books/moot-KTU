@@ -121,3 +121,34 @@ Average\ Case &= \frac{1+2+3+\dots+n+n}{n+1} \\
               &= \frac{n}{n+1} + \frac{n}{2} \\
               &= \Theta(n)
 \end{align}
+
+
+# Module V
+## Minimal Cost Spanning Tree Computation
+Consider a Graph $G(V, E)$, a Spanning Tree is a Tree that contains all the vertices of G. It has no cycles, no self-loops and no parallel edges and should be minimally connected.
+
+A Minimal Cost Spanning Tree is a tree where the sum of edges is minimum.
+
+### Prim's Algorithm
+Prim's Algorithm is a greedy algorithm that when given a weighted Graph=G(V,E) would output the corresponding Minimum Cost Spanning Tree.
+
+**Algorithm**
+```
+MST-PRIM(G, w, r) 
+  Q <- V[G]
+
+  for each u element of Q
+    do key[u] <- infinity
+  key[r] <- 0
+  pi[r] <- NULL
+  
+  while Q is not NULL
+    do u <- EXTRACT_MIN(Q)
+      for each v in Adj[u]
+        do if v in Q and w(u, v) < key[v]
+          then pi[v] <- u
+            key[v] <- w(u, v)
+```
+In Prim's algorithm The priority Queue Q is initialized to contain all the vertices and to set the key of each vertex to $\infty$, except for the root r, whose key is set to 0. Then 
+
+![Prim's Algorithm](assets/cs302_primsalgo.png){#fig:primsalgo height=60%}
