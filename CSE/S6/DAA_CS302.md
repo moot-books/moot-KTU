@@ -149,6 +149,33 @@ MST-PRIM(G, w, r)
           then pi[v] <- u
             key[v] <- w(u, v)
 ```
-In Prim's algorithm The priority Queue Q is initialized to contain all the vertices and to set the key of each vertex to $\infty$, except for the root r, whose key is set to 0. Then 
+It is an extension of the generic approach where each vertex is added progressively. 
 
 ![Prim's Algorithm](assets/cs302_primsalgo.png){#fig:primsalgo height=60%}
+
+
+**Working of the Algorithm**
+
+* lines 1-3) All nodes are placed in Q (the set of nodes not in the tree), their parents are declared to be NIL, and their key (i.e. minimum distance to the existing tree along a single edge) is set to infinity
+
+* (line 4) The key of the root node (node a) is set to 0
+
+* (line 6) The node u with minimum key (which is the root node a) is removed from Q and added to the tree
+
+* (lines 8-11) The keys of nodes b and h are updated to 4 and 8, and pi(b) and pi(h) are set to u (but b and h are not extracted from Q). This completes step (a)
+
+* (line 6) The node u with minimum key (which is now node b, with key=4) is removed from Q and added to the tree via its parent (which is pi(b)=a)
+
+* (lines 8-11) The key of nodes c is updated to 8, and pi(c) is set to b. Since key(h)=8 is smaller than 11=w(b,h), the key and parent of h are not updated. This completes step (b)
+
+* (line 6) The node u with minimum key (node c, with key=8, but it could also have been node h, which also has key=8) is removed from Q and added to the tree via its parent (which is pi(c)=b)
+
+* (lines 8-11) Update keys and parents of nodes d, i, and f, completing step (c)
+
+The performance of Prim’s algorithm depends on how we implement the minpriority queue Q. If Q is implemented as a binary min-heap, we can use the BUILD-MIN-HEAP procedure to perform the initialization in lines 1-5 in O(V) time. The body of the while loop is executed $|V|$ times, and since each EXTRACT-MIN operation takes $|O(lg V)|$ time, the total time for all calls to EXTRACT-MIN is $|O(V lgV)|$. The for loop in lines 8-11 is executed $O(E)$ times altogether, since the sum of the lengths of all adjacency lists is $2|E|$. Within the for loop, the test for membership in Q in line 9 can be implemented in constant time by keeping a bit for each vertex that tells whether or not it is in Q, and updating the bit when the vertex is removed from Q. The assignment in line 11 involves an implicit DECREASE-KEY operation on the min-heap, which can be implemented in a binary min-heap in $O(lg V)$ time. Thus, the total time for Prim’s algorithm is $O(VlgV + ElgV) = O(ElgV)$, which is asymptotically the same as for our implementation of Kruskal’s algorithm.
+
+The asymptotic running time of Prim’s algorithm can be improved, however,
+by using Fibonacci heaps. if $|V|$ elements are organized
+into a Fibonacci heap, we can perform an EXTRACT-MIN operation in $|O(lg V)|$
+amortized time and a DECREASE-KEY operation (to implement line 11) in $O(1)$
+amortized time. Therefore, if we use a Fibonacci heap to implement the minpriority queue Q, the running time of Prim’s algorithm improves to $O(E + VlgV)$.
