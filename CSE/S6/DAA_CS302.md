@@ -123,9 +123,63 @@ Average\ Case &= \frac{1+2+3+\dots+n+n}{n+1} \\
 \end{align}
 
 
+# Graphs
+Graphs are representations of set of objects called **vertices** connected by links called **edges**. It can either be directed(where on edge can only connect two vertices in one way** or undirected.
+
+A Weighted graph is a graph where each edges have corresponding weights.
+
+### Representation of Graphs
+**Adjacency Matrix** : The adjacency matrix representation of a graph G with n vertices is an nxn matrix AG such that each entry $a_{ij}$ corresponds to the number of edges connecting vertices $v_i$ and $v_j$.
+
+- $a_{ij}$ is 0 when no edges
+- If G has no self loops then main diagonal will only have zeroes
+- If G has no parallel edges then all elements will either be zero or one.
+
+![Adjacency Matrix](./assets/cs302_adjacencymatrix.gif){#fig:adjacencymatrix width=50%}
+
+**Adjacency List** : In this representation each row of the adjacency matrix is represented as a linked list for each vertex. The nodes in each list represent the vertices adjacent to the given vertex.
+
+**Adjacency Multilist** : In this representation the edge connecting $V_i$ and $V_j$ are represented by two entries in each list for $V_i$ and $V_j$.
+
+**Path Matrix** : A path matrix is defined for a pair of vertices $(x, y)$, where the row contains different paths between vertices x and y, and columns corresponds to edges in G.
+
+\begin{equation}
+    P_{ij}=
+    \begin{cases}
+      1, & \text{if path between vi and vj} \\
+      0, & \text{otherwise}
+    \end{cases}
+\end{equation}
+
+## Graph Traversal
+Graph Traversl refers to the process of visiting each vertex in a graph. Graph Traversal has many applications. The order in which the edges are traversed are decided by the algorithm.
+
+### Depth First Search Algorithm
+In DFS traversal the nodes are visited in such a way as to form the longest path from the starting vertex. When a dead end is reached the algorithm backtracks and adds branches as long as possible. It uses a stack to store the vertices of the graph.
+
+DFS is generisation of preorder traversal. The starting vertex can be chosen arbitarily.
+
+A dead end is an vertex where all the neighbouring vertices have been visited, we then back up along the last edge and branch out in another direction.
+
+**Algorithm**
+
+1. Choose arbitary node, designate as search node and mark as visited.
+
+2. From the adjacency matrix, find a node adjacent to the search node that has not yet been visited and mark as visited search node.
+
+3. Repeat Step 2 using the new search node. When there are no remaining nodes satisfying Step 2, back track to previous search node and continue.
+
+4. When return to previous search node is not possible, the search from original chosen node is complete.
+
+5. If unvisited nodes are remaining, choose any unvisited nodes and repeat Step 1 to Step 4.
+
+6. Stop
+
+![Depth First Search](./assets/cs302_dfs.jpg){#fig:dfs width=80%}
+
 # Module V
 ## Minimal Cost Spanning Tree Computation
-Consider a Graph $G(V, E)$, a Spanning Tree is a Tree that contains all the vertices of G. It has no cycles, no self-loops and no parallel edges and should be minimally connected.
+Consider a Graph $G(V, E)$, a Spanning Tree is a Tree that contains all the vertices of G. It has no cycles, no self-loops and no parallel edges and should be minimally connected, for n vertices there should only be n-1 edges
 
 A Minimal Cost Spanning Tree is a tree where the sum of edges is minimum.
 
