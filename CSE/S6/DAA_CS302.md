@@ -175,9 +175,36 @@ A dead end is an vertex where all the neighbouring vertices have been visited, w
 
 6. Stop
 
+**Time Complexity** : The time taken to determine the adjacent vertices from an adjacency matrix is $O(n)$. Since at most n vertices are visited, the total time complexity is $O(n^2)$.
+
 ![Depth First Search](./assets/cs302_dfs.jpg){#fig:dfs width=80%}
 
-# Module V
+### Breadth First Search - BFS
+In BFS the idea is to select first a root vertex $V_i$ visit all it's adjacent vertices, then the ones that are adjacent to the adjacent vertices of $V_i$ that has not yet been visited.
+
+The graph is searched breadth wise and a queue is the convienent data structure to keep track of visited nodes.
+
+**Algorithm**
+
+1. Start with any vertex and mark as visited.
+
+2. Using the adjacency matrix, find a vertex adjacent to the vertex in step 1, Mark as visited.
+
+3. Return to vertex in Step 1, move along edge towards an unvisited vertex, and mark the new vertex as visited.
+
+4. Repeat step 3 until all vertices adjacent to the vertex has been marked as visited.
+
+5. Repeat Step 1 through Step 4 starting from the vertex visited in Step 2 , then starting from the nodes visited to Step 3 in the order visited. If all vertices have been visited, then continue to the next step.
+
+5. Stop
+
+**Time Complexity** : The queue is used exactly once by each vertex hence $n$ times. If an adjacency matrix is use then the for loop takes another $O(n)$ time for each vertex. The time complexity becomes $O(n^2)$.
+
+Example {@fig:bfs}
+
+![Breadth First Search](./assets/cs302_bfs.jpg){#fig:bfs}
+
+# Greedy Strategy
 ## Minimal Cost Spanning Tree Computation
 Consider a Graph $G(V, E)$, a Spanning Tree is a Tree that contains all the vertices of G. It has no cycles, no self-loops and no parallel edges and should be minimally connected, for n vertices there should only be n-1 edges
 
