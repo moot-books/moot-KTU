@@ -14,7 +14,6 @@ before_install:
 script: rake
 
 deploy:
-  provider: surge
-  project: ./BOOKS/
+  provider: pages
+  local_dir: ./BOOKS/
   skip_cleanup: true
-  domain: moot-books-ktu.surge.sh
