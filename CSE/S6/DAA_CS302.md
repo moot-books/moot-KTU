@@ -231,6 +231,14 @@ We are given a weighted network $(V, E, C)$ with node set $V$ , edge set $E$, an
 
 ### Dijkstra’s Algorithm 
 
+## Topological Sorting
+The Topological ordering is an ordering of a directed graph such that for every directed edge from u to v in the graph, u should appear before v in the topological ordering.
+
+It is only possible in graphs without cycles, Directed Acyclic Graphs(DAG)
+
+## Strongly Connected Components
+Connectivity in an undirected graph means each vertex can reach every other vertex via any one path. Strong Connectivity is the same as Connectivity but applied to directed graphs. In Strong Connectiviy there should be a directed edge from any one vertex to another vertex.
+
 # Greedy Strategy
 ## Minimal Cost Spanning Tree Computation
 Consider a Graph $G(V, E)$, a Spanning Tree is a Tree that contains all the vertices of G. It has no cycles, no self-loops and no parallel edges and should be minimally connected, for n vertices there should only be n-1 edges

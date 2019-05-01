@@ -1,6 +1,8 @@
 # Massive Online Open Textboks - KTU
 MOOTS are open-source textbooks written by students, verified by the faculty and tailored for the syllabus taught at the university.
 
+[Books](https://moot-books.github.io/moot-KTU/)
+
 ## Principles
 * Each textbook should be self sufficient for a motivated self learner
 * Each textbook should be written in the simplest language possible, with textbook definitions quoted
