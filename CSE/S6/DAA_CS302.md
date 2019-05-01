@@ -198,11 +198,38 @@ The graph is searched breadth wise and a queue is the convienent data structure 
 
 5. Stop
 
-**Time Complexity** : The queue is used exactly once by each vertex hence $n$ times. If an adjacency matrix is use then the for loop takes another $O(n)$ time for each vertex. The time complexity becomes $O(n^2)$.
+**Time Complexity** : The queue is used exactly once by each vertex hence $n$ times. If an adjacency matrix is use then the for loop takes another $O(n)$ time for each vertex. The time complexity becomes $O(n^2**$.
 
 Example {@fig:bfs}
 
+**Applications**
+
+- Shortest distance and Minimum Spanning Tree, in shortest path is the path with the least number of edges. BFS produces the path with the least number of edges.
+
+- Finding the Minimum Spanning Tree
+
 ![Breadth First Search](./assets/cs302_bfs.jpg){#fig:bfs}
+
+## Spanning Trees
+Given an undirected and connected graph $G=(V, E)$, a spanning tree of the graph $G$ is a tree that spans $G$ (that is, it includes every vertex of $G$) and is a subgraph of $G$ (every edge in the tree belongs to $G$)
+
+**Properties**
+
+- Spanning Tree is the maximal tree subgraph or maximal tree of G, as it is the largest tree that can be derieved from a Graph G.
+
+- Disconnected graph with k components has a spanning forest of k trees as each component can have a distinct spanning tree.
+
+### Minimum Cost Spanning Tree
+The Minimum Cost Spanning Tree is defined on a weighted, undirected, connected graph G from the set of spanning tree whose sum of edges is minimum.
+
+![Spanning Tree and Minimum Spanning Tree](./assets/cs302_spanningtree.jpg){#fig:spanningtree}
+
+## Single Source Shortest Paths
+In graph theory, the shortest path problem is the problem of finding a path between two vertices (or nodes) in a graph such that the sum of the weights of its constituent edges is minimized.
+
+We are given a weighted network $(V, E, C)$ with node set $V$ , edge set $E$, and the weight set $C$ specifying weights $c_{ij}$ for the edges $(i, j) \in E$. We are also given a starting node $s \in V$ . The one-to-all shortest path problem is the problem of determining the shortest path from node $s$ to all the other nodes in the network.
+
+### Dijkstra’s Algorithm 
 
 # Greedy Strategy
 ## Minimal Cost Spanning Tree Computation
