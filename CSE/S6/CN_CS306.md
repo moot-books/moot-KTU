@@ -124,3 +124,22 @@ Protocols are together called **Protocol Stack** or set of protocols.
 As far as the above diagram is concerned another important issue to be discussed is the interface between each layer. It defines the services and operation the lower layer offers to the one above It. When a network is built decisions are made to decide how many layers to be included and what each layer should do. So each layer performs a different function and as a result the amount of information past from layer to layer is minimized. 
 
 ### Design Issues for a layer
+
+# Network Layer
+Network layer responds to service requests from the transport layer and issues service request to the data link layer. It addresses messages and transalates logical addresses and names into physical addresses.
+
+### Functions of Network Layer
+
+ - __Logical Addressing__ : The network layer adds a header to the packet coming from the upper layer that, among other things, includes the logical address of the sender and reciever.
+
+ - __Routing__ : Network layer connects different smaller networks to form a bigger network.
+ - __Internetworking__ : Creates the logical connection between different types of networks.
+ - __Packetising__ : The network layer encapsulates packets from upper layer and creats new packets.
+ - __Fragmenting__ : Each router decapsulates the IP datagram from the received frame. Then the datagram is processed and encapsulated in another frame.
+ 
+
+### Design Issues of Network Layer
+
+__Services Provided to Transport Layer__ : Main features of the services provided to transport layer are as follows
+
+- The services provided should be independent of underlying technology.

@@ -55,3 +55,5 @@ Consumes the Stream of tokens passed by the Lexical Analyser and groups them int
 
 * Checks whether the statement is acceptable in that language.
 * Make use of Context Free Grammer.
+
+# Code Optimization and Code Generation
