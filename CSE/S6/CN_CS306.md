@@ -125,6 +125,32 @@ As far as the above diagram is concerned another important issue to be discussed
 
 ### Design Issues for a layer
 
+# Data Link Layer Design Issues
+
+## Data Link Layer
+The data link layer is the protocol layer that handles the moving of data into and out of a physical link in a network. The data link layer is Layer 2 in the Open Systems Interconnection (OSI) architecture model. 
+
+Data bits are encoded, decoded and organized in the data link layer, before they are transported as frames between two adjacent nodes on the same network. The data link layer also determines how devices recover from collisions that may occur when nodes attempt to send frames at the same time.
+
+![Data Link Layer](assets/cs306_datalinklayer.png){#fig:datalinklayer width=70%}
+
+### Data Link Layer Design Issues
+The design issues in data link layer are given below
+
+__Services provided to Network Layer__ : In the OSI model each layer uses the services provided by the layers below it. The data link layer uses the services provided by the physical layer and should provide a well defined interfacea and associated services to the network layer on top.
+
+These are the main three services that can be provided by the layer
+
+* Unacknowledged Connectionless Service
+* Acknowledged Connectionless Service
+* Acknowledged Connection Oriented Service
+
+__Framing__ : Framing is the funciton of data layer. It groups the stream of bits being sent from the sender into discrete blocks of information that are meaningful to the reciever.
+
+__Flow Control__ : Flow control is a technique that allows two stations working at different speeds to communicate with each other. It is a set of measures taken to regulate the amount of data that a sender sends so that a fast sender does not overwhelm a slow receiver. In data link layer, flow control restricts the number of frames the sender can send before it waits for an acknowledgment from the receiver.
+
+__Error Control__ : 
+
 # Network Layer
 Network layer responds to service requests from the transport layer and issues service request to the data link layer. It addresses messages and transalates logical addresses and names into physical addresses.
 
@@ -137,9 +163,15 @@ Network layer responds to service requests from the transport layer and issues s
  - __Packetising__ : The network layer encapsulates packets from upper layer and creats new packets.
  - __Fragmenting__ : Each router decapsulates the IP datagram from the received frame. Then the datagram is processed and encapsulated in another frame.
  
-
 ### Design Issues of Network Layer
 
 __Services Provided to Transport Layer__ : Main features of the services provided to transport layer are as follows
 
 - The services provided should be independent of underlying technology.
+
+
+# Congestion Control Algorithms
+
+# Internet Control Protocols
+
+# Transport Layer
