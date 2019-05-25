@@ -159,6 +159,80 @@ A' \rightarrow aA'/\epsilon
 \end{align}
 
 # Bottom-Up Parsing
+Bottom Up parsing is a parsing technique in which the parsing tree is constructed beginning at the bottom and then working upwards.
+
+## Shift Reduce Parsing
+It is a form of bottom up parsing in which a stack holds the non terminals and an input buffer holds the string to be parsed. It is used to create a parse tree beginning at the bottom working to the top.
+
+At each reduction the symbols on the right side are reduced by the symbols on t
+he left side of the production.
+
+\begin{align}
+S &\rightarrow aABe \\
+A &\rightarrow Abc / b \\
+B &\rightarrow d 
+\end{align}
+
+
+The sentence abbcde can be reduced by
+
+\begin{align}
+abbcde \\
+aAbcde &\because A \rightarrow b \\
+aAde &\because A \rightarrow Abc \\
+aABe &\because B \rightarrow d \\
+S &\because S \rightarrow aABe 
+\end{align}
+
+Reduction : Each replacement of the right side by the corresponding left side is called reduction.
+
+__Handle__ : The right hand side string which is reduced by the corresponding left side production is called handle. In the reduction $aAbcde \because A \rightarrow b$ b is the handle.
+
+### Stack Implementation of Shift Reduce Parsing
+Shift Reduce Parsing is commonly implemented using a Stack with starting symbol \$ and input buffer.
+
+There are four possible actions the parser can make
+
+1. Shift : The next input symbol is pushed on top of the stack
+
+2. Reduce : The handle at the top of the stack is replaced with the correspoding non-terminal
+3. Accept : The parser has completed the parsing and the given string is accepted
+4. Error: The parser encounters a syntax error and calls the error recoverty routine.
+
+### Handle Pruning
+
+## Operator Precedence Parsing
+It is a method of Shift Reduce Parsing that only works on subset of context free grammers called operator grammers.
+
+An operator grammer must satifsy the following properties 
+
+1. The right hand side of the productions does not contain an $\epsilon$
+2. No two non-terminals are adjacent
+
+### Operator Precedence Parsing Algorithm
+Input : The precedence relations from some operator-precedence grammer and input string of terminals from that grammer.
+
+```{.numberLines}
+repeat forever
+  if only  $ is on the stack and only $ is on the input
+    accept and break
+  else 
+    begin
+      let a be the topmost terminal symbol, b the current input symbol
+      if a < b or a = b then 
+        begin
+          push b on the stack
+        end
+      else if a > b then
+        repeat pop the stack
+          until the top stack terminal is related by < 
+          to the terminal most recently popped
+      else call error correcting code
+  end
+```
+
+## LR Parsing
+LR parsing is a type of bottom up parsing used to parse a large number of grammers.
 
 # Syntax Directed Transalation and TypeChecking
 

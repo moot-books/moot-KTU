@@ -30,7 +30,7 @@ rule ".pdf" => [->(f){source_for_pdf(f)}, "BOOKS"] do |t|
   mkdir_p t.name.pathmap("%d")
   Dir.chdir(t.source.pathmap("%d")) do
     sh 'pandoc ' \
-      '--variable fontsize=12pt ' \
+      '--variable fontsize=11pt ' \
       '--variable date:"\today" ' \
       '--variable geometry:a4paper ' \
       '--variable documentclass:book ' \
