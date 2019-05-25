@@ -232,10 +232,135 @@ repeat forever
 ```
 
 ## LR Parsing
-LR parsing is a type of bottom up parsing used to parse a large number of grammers.
+LR parsing is a type of bottom up parsing used to parse a large number of grammers. LR scans the input stream from left to right and constructs the right most derivation in reverse.
+
+![LR Parser](./assets/cs304_lrparser.png){#fig:lrparser width=40%}
+
+### LR Parsing Algorithm
+
+### Advantages and Disadvantages of LR Parser
+
+### Difference between LL and LR Parsers
+
+### SLR
+SLR refers to Simple LR parsing. It is the same as LR(0), the difference being the way the table is generated. It only performs the reduction with the grammer rule $A \rightarrow w$ if the next symbol in the input string is follow set of A.
+
+### Canonical LR Parser
+
+### LALR Parsing 
 
 # Syntax Directed Transalation and TypeChecking
 
 # Run-Time Environments and Intermediate Code Generation
+Run Time Environment is a state of the target machine, which may include libraries, enviroment variables to provide services to the processes in execution.
 
+## Source Language Issues
+A program consist of procedures, a procedure definition is a declaration that, in its simplest form, associates an identifier (procedure name) with a statement (body of the procedure).  Each execution of procedure is referred to as an activation of the procedure. Lifetime of an activation is the sequence of steps present in the execution of the procedure.
+
+### Activation Trees
+Each execution of the procedure body is termed as an activation of the procedure. The lifetime of a procedure is the steps between the start and the end of the procedure.
+
+We can use an Activation Tree to depict the flow of control enters and leaves activation.
+
+1. Each node represents an activation of a procedure.
+2. The root represents the activation of the main program.
+3. A node x can only be the parent of another node y if and only if the control passes from x to y.
+4. Nodes to the left of another node should complete it's lifetime before the ones on the right.
+
+Consider the given program
+``` c
+printf(“Enter Your Name: “);
+scanf(“%s”, username);
+show_data(username);
+printf(“Press any key to continue…”);
+. . .
+int show_data(char *user) {
+   printf(“Your name is %s”, username);
+   return 0;
+}
+```
+
+The corresponding activation tree is 
+
+![Activation Tree](./assets/cs304_activationtree.jpg){#fig:activationtree width=60%}
+
+### Scope of Declaration
+A declaration in a language is a syntactic construct that associates information with a name. The portion of the program which the declaration applies is called the scope of the declaration.
+
+
+### Binding of Names
+The enviroment is a function which maps a name to a storage location. Each name declared in the program may denote different data objects at runtime.
+
+An assignement changes state but not the enviroment. When the enviroment associates a storage location S with a name say X, we say X is bound to S.
+
+
+## Storage Organisation
+The memory of program is subdivided into different parts to hold
+
+1. Generated target code
+2. Data object
+3. Counter part of control stack to keep track of procedure activation
+
+Since the size of target code is known at runtime it is placed in a statically determined area. Data objects known at compile time are also kept in the static data section.
+
+When a function call occurs, execution of the parent activation is interrupted and information about status of machine is pushed on to the Stack. 
+
+A separate area of runtime memory is called a heap, holds all other information and dynamic data allocations
+
+![Storage Organisation](./assets/cs304_storageorganisation.jpg){#fig:storageorganisation height=30%}
+
+### Activation Record
+The information needed by a single execution of a procedure or activation is stored in a continguous block of storage called a activation record or frame. See @fig:activationrecord
+
+![Activation Record](./assets/cs304_activationrecord.jpg){#fig:activationrecord height=20%}
+
+## Storage Allocation Strategies
+The different storage allocation strategies are :
+
+1. Static allocation - lays out storage for all data objects at compile time
+2. Stack allocation - manages the run-time storage as a stack.
+3. Heap allocation - allocates and deallocates storage as needed at run time from a data area known as heap.
+
+### Static Allocation
+
+In static allocation, names are bound to storage as the program is compiled, so there is no need for a run-time support package. Since the bindings do not change at run-time, everytime a procedure is activated, its names are bound to the same storage locations. Therefore values of local names are retained across activations of a procedure.
+
+From the type of a name, the compiler decides the amount of storage for the name and decides where the activation records go. At compile time, we can fill in the addresses at which the target code can find the data it operates on.
+
+### Stack Allocation
+
+All compilers for languages that use procedures, functions or methods as units of user-defined actions manage at least part of their run-time memory as a stack. Each time a procedure is called , space for its local variables is pushed onto a stack, and when the procedure terminates, that space is popped off the Stack.
+
+__Calling sequences__: Procedures called are implemented in what is called as calling sequence, which consists of code that allocates an activation record on the stack and enters information into its fields. A return sequence is similar to code to restore the state of machine so the calling procedure can continue its execution after the call. The code in calling sequence is often divided between the calling procedure (caller) and the procedure it calls (callee).
+
+### Heap Allocation
+Heap allocation allocates contiguous storage as needed for activation records or other data objects.
+
+## Intermediate Code Generation
+The front end of the compiler transaltes the source program into an internal intermediate representation from which the backend generates specific target code.
+ 
+The benefits of using this artitecture is 
+1. The code can be compiled for a new machine artitecture by only porting the backend that generates the specific machine dependent code.
+2. A machine independent optimizer can be applied to the intermediate representation.
+
+### Syntax Tree DAG
+A syntax tree depicts the natural hierarchical structure of a source program. A dag (Directed Acyclic Graph) gives the same information but in a more compact way because common subexpressions are identified. 
+
+The syntax tree of the expression $a := b * - c + b * - c$
+
+![Syntax Tree](./assets/cs304_syntaxtreedag.png){#fig:syntaxtreedag}
+
+### Postfix Notation
+Postfix notation is a lineraized representation of a syntax tree, it is a list of nodes in which a node appears immediately after it's children.
+
+### Three Address Code
+Three-address code is a sequence of statements of the general form $x := y\ op\ z$ , where x, y and z are names, constants, or compiler-generated temporaries; op stands for any operator, such as a fixed- or floating-point arithmetic operator, or a logical operator on boolean-valued data. Thus a source language expression like $x+y*z$ might be translated into a sequence
+
+\begin{align}
+t1 &:= y * z \\
+t2 &:= x + t1
+\end{align}
+
+where t1 and t2 are compiler-generated temporary names.
+ 
 # Code Optimization and Code Generation
