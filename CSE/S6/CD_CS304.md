@@ -30,7 +30,7 @@ Since Interpreter has to do the work of reading, parsing and executing the progr
 
 The compiler converts the program while going through different phases of transformations. See +@fig:compilerphases
 
-![Execution of Program](assets/cs304_executionsequence.png){#fig:compilerphases}
+![Execution of Program](./assets/cs304_executionsequence.png){#fig:compilerphases}
 
 
 ## Parts of Compilation
@@ -110,7 +110,53 @@ A derivation tree or a parse tree for grammer $G = (V, \Sigma, R, S)$ is a tree 
 * The internal nodes will always be a variable
 * If the vertices $n_1, n_2,\dots , n_k$ with labels $X_1, X_2, \dots, X_k$ are the sons of vertex n with label A, then $A->X_1, X_2, \dots, X_k$ is a production in P.
 
-![Derivation Tree](./assets/cs304_derivationtree.jpg){#fig:derivationtree width=70%}
+![Derivation Tree](./assets/cs304_derivationtree.jpg){#fig:derivationtree width=65%}
+
+### Ambiguity
+When the grammer produces more than one parse tree for a given grammer, then the grammer is called as Ambigious.In an ambigious grammer there may be more than one left-most derivation tree or right-most derivation tree.
+
+## Top Down Parsing
+In top down parsing the parse tree is first constructed from the root and creating the nodes in preorder.
+
+Top down parsing finds the left most derivation for a given string. Top down parsing is also called **LL()** parsing as it parses the input from left to right performing left most derivation on the sentence.
+
+**Drawbacks of Top Down Parser**
+
+* Infinite Looping : For the grammer $X \rightarrow Xa$ when we expand $X$ we can get into an infinte loop as $X$ again derives $X$.
+
+* Left Recursion : $X \rightarrow Xa$ is an example of a left recursive production where X derives itself recursively and can cause infinite loop.
+* Back Tracking Problem: When an errorous input is discovered the parser has to backtrack and delete upto the errorous input. This is complex to implement and error prone.
+* Order of Alternatives
+* No idea about errors
+
+### Backtracking Parser
+The process of repeated scans of the input string is called backtracking. A backtracking parser will pass over the input multiple times to find the left most derivation tree.
+
+### Predictive Parser
+It is a tabular representation of recursive descent parser. A predicate parser predicts the next construction in the input string by using look-ahead-token added to the table, these can be used to eliminate backtracking.
+
+![Predictive Parser](./assets/cs304_predictiveparser.jpg){#fig:predictiveparser width=50%}
+
+First and Follow is used to generate the parsing table. 
+
+Tutorial on generating First and Follow [Youtube Tutorial by Ravindrababu Ravula](https://www\.youtube\.com/watch\?v=_uSlP91jmTM)
+
+## Recursive Descent Parsing
+It is a type of top down parser that built from a set of mutually recursive procedures where each procedure implements one of the non-terminals of the grammer. It uses this list of recursive procedures to recognize it's input without any backtracking is called recursive descent parsing.
+
+### LL(1) Grammer
+LL(1) parser is a table driven parser for left-to-left parsing. The '1' indicates that the grammer uses a look ahead of one source symbol.
+
+## Removing Drawback of Top Down Parsing
+### Elimination of Left Recursion
+$X \rightarrow Xa$ is an example of a left recursive production where X derives itself recursively and can cause infinite loop.Top down parsers can't handle these type of grammer, hence these recursive rules must be eliminated.
+
+Consider the following grammer $A \rightarrow Aa/b$ , we can eliminate the left recursion by replacing part of production with
+
+\begin{align}
+A \rightarrow bA' \\
+A' \rightarrow aA'/\epsilon 
+\end{align}
 
 # Bottom-Up Parsing
 
