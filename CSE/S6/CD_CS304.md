@@ -92,13 +92,30 @@ Context Free Grammers (CFG's) are a certain type of formal grammer containing  r
 
 A context-free-grammer $G$ is represented by a tuple $G = (V, \Sigma, R, S)$
 
-* $\Sigma$ is a finite set of terminals disjoint from $W$, they make up the actual letters used in the sentence. The set of terminals is the alphabet of the language defined by grammer $G$.
+* $\Sigma$ is a finite set of terminals disjoint from $V$, they make up the actual letters used in the sentence. The set of terminals is the alphabet of the language defined by grammer $G$.
 * An alphabet of $V$ of non-terminal symbols or variables.
 * $R$ is the set of rewrite rules or productions of the grammer.
 * A start symbol $s$ used to represent the whole sentence or program. $s \in V$.
 
+The process of generating valid strings from a grammer is called **Derivation** and the process of validating a string on the given grammer is **Reduction**.
 
 ## Derivation Trees
+Grammer can be represented as trees. The tree representation of a derivation is called Derivation Trees.
 
+A derivation tree or a parse tree for grammer $G = (V, \Sigma, R, S)$ is a tree with the following properties
+
+* Every vertex is labelled with either a non-terminal or a variable
+
+* The root node is always represented with S
+* The internal nodes will always be a variable
+* If the vertices $n_1, n_2,\dots , n_k$ with labels $X_1, X_2, \dots, X_k$ are the sons of vertex n with label A, then $A->X_1, X_2, \dots, X_k$ is a production in P.
+
+![Derivation Tree](./assets/cs304_derivationtree.jpg){#fig:derivationtree width=70%}
+
+# Bottom-Up Parsing
+
+# Syntax Directed Transalation and TypeChecking
+
+# Run-Time Environments and Intermediate Code Generation
 
 # Code Optimization and Code Generation
