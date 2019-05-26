@@ -123,6 +123,73 @@ Average\ Case &= \frac{1+2+3+\dots+n+n}{n+1} \\
 \end{align}
 
 
+# Master's Theorem and AVL Trees
+## Master's Theorem
+Master's theorem is used to solve recurrences of the following type $T(n)=aT(n/b) + f(n)$ where $a$ and $b$ are constants, $a \geq 1, b > 1$ and $f(n)$ is a positive function.
+
+case 1: if $f(n)=O(n^{(log_ba - \varepsilon)})$ for some $\varepsilon > 0$ then $T(n) = \theta(n^{log_ba})$
+
+case 2: if $f(n)=\theta(n^{log_ban})$ then $T(n) = \theta(n^{log_ba}logn)$
+
+case 3: if $f(n)=\omega(n^{(log_ba + \varepsilon)})$ for some $\varepsilon > 0$ and $a(f(n/b)) \leq c.f(n)$ then $T(n) = \theta(f(n))$
+
+## AVL Trees
+When data comes into binary tree as sorted, then the resulting binary tree will be skewed towards one side, hence the words case performance will be closer to $O(n)$.
+
+![Skewed Balanced Search Tree](./assets/cs302_unbalancedbst.jpg){#fig:unbalancedbst width=60%}
+
+AVL trees are height balancing binary search tree. AVL trees check the height of left and right side and always makes sure the difference is not more than one.
+
+### Insertion in AVL Trees
+Insert a new node in BST order. Check if there are height differences, and if there are perform neccesary rotations.
+
+![RL Rotation in AVL Trees](./assets/cs302_rlrotation.png){#fig:rlrotation width=80%}
+
+## Red Black Tree
+Red black trees are balanced binary trees whose height will be in the order of log n.
+
+* Root will always be black in color
+* There cannot be two adjacent red nodes in a path
+* In all paths from root to node number of black nodes will be same
+* All nodes are either red or black
+
+The AVL trees are more balanced compared to Red-Black Trees, but they may cause more rotations during insertion and deletion.
+
+### Insertion in RB Tree
+### Deletion in RB Tree
+
+## B-Tree
+B-Tree is a self-balancing search tree. In most of the other self-balancing search trees (like AVL and Red-Black Trees), it is assumed that everything is in main memory. When the number of keys is high, the data is read from disk in the form of blocks. The main idea of using B-Trees is to reduce the number of disk accesses. Most of the tree operations (search, insert, delete, max, min, ..etc ) require O(h) disk accesses where h is the height of the tree. B-tree is a fat tree. 
+
+The height of B-Trees is kept low by putting maximum possible keys in a B-Tree node.
+
+Properties
+
+1. All leaves are at same level.
+
+2. A B-Tree is defined by the term minimum degree ‘t’. The value of t depends upon disk block size.
+3. Every node except root must contain at least $t-1$ keys. Root may contain minimum 1 key.
+4. All nodes (including root) may contain at most $2t – 1$ keys.
+5. Number of children of a node is equal to the number of keys in it plus 1.
+6. All keys of a node are sorted in increasing order. The child between two keys k1 and k2 contains all keys in the range from k1 and k2.
+7. B-Tree grows and shrinks from the root which is unlike Binary Search Tree. Binary Search Trees grow downward and also shrink from downward.
+8. Like other balanced Binary Search Trees, time complexity to search, insert and delete is $O(logn)$.
+
+### Insertion in B-Tree
+### Deletion in B-Tree
+
+## Disjoint Sets
+A disjoint set is a data structure that keeps track of elements partitioned into a number of disjoint (non-overlapping) subsets.
+
+### Operations on Disjoint Sets
+
+* `make_set(X)`
+* `find(X)`
+* `union(X, Y)`
+
+### Linked List Implementation
+### Disjoint Forest Implementation
+
 # Graphs
 Graphs are representations of set of objects called **vertices** connected by links called **edges**. It can either be directed(where on edge can only connect two vertices in one way** or undirected.
 
@@ -239,6 +306,7 @@ It is only possible in graphs without cycles, Directed Acyclic Graphs(DAG)
 ## Strongly Connected Components
 Connectivity in an undirected graph means each vertex can reach every other vertex via any one path. Strong Connectivity is the same as Connectivity but applied to directed graphs. In Strong Connectiviy there should be a directed edge from any one vertex to another vertex.
 
+# Dynamic Programming
 # Greedy Strategy
 ## Minimal Cost Spanning Tree Computation
 Consider a Graph $G(V, E)$, a Spanning Tree is a Tree that contains all the vertices of G. It has no cycles, no self-loops and no parallel edges and should be minimally connected, for n vertices there should only be n-1 edges
@@ -295,3 +363,4 @@ by using Fibonacci heaps. if $|V|$ elements are organized
 into a Fibonacci heap, we can perform an EXTRACT-MIN operation in $|O(lg V)|$
 amortized time and a DECREASE-KEY operation (to implement line 11) in $O(1)$
 amortized time. Therefore, if we use a Fibonacci heap to implement the minpriority queue Q, the running time of Prim’s algorithm improves to $O(E + VlgV)$.
+# BackTracking and Complexity Theory
