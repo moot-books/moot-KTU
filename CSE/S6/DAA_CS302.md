@@ -307,6 +307,127 @@ It is only possible in graphs without cycles, Directed Acyclic Graphs(DAG)
 Connectivity in an undirected graph means each vertex can reach every other vertex via any one path. Strong Connectivity is the same as Connectivity but applied to directed graphs. In Strong Connectiviy there should be a directed edge from any one vertex to another vertex.
 
 # Dynamic Programming
+## Dynamic Programming
+Given a problem to solve for n elements, dynamic programming splits the problem into numerous sub problems and then computes the results of the sub-problems and then combines these results to form the solution to the major problem.
+
+### Control Abstraction
+It defines the flow of control of any algorithms.
+
+### Recurrence Relation
+
+$$
+T(n) = 
+\begin{cases}
+  g(n), & \text{if n is small} \\
+  T(n_1) + T(n_2) + \dots + T(n_k) + f(n), & \text{if n is large}
+\end{cases}
+$$
+
+## Two Way Merge Sort
+The problem of sorting a list of numbers lends itself immediately to a divide-and-conquer strategy: split the list into two halves, recursively sort each half, and then merge the two sorted sub-lists.
+
+Algorithm : 
+
+```{.numberLines}
+Merge-Sort (numbers, low, high) 
+    if low == high then return
+
+    mid = (low + high) / 2
+    Merge-Sort (numbers, low, mid) 
+    Merge-Sort (numbers, mid + 1, high) 
+    Merge (numbers, low, mid+high) 
+```
+
+### Complexity of Merge Sort
+$$
+T(n) = 
+\begin{cases}
+  c, & \text{if n is small} \\
+  2T(\frac{n}{2}) + n & \text{if n is large}
+\end{cases}
+$$
+
+## Binary Search
+Binary search can be performed on a sorted array. In this approach, the index of an element x is determined if the element belongs to the list of elements. If the array is unsorted, linear search is used to determine the position.
+
+Algorithm:
+```
+Binary-Search(numbers[], x, l, r)
+if l = r then
+   return l
+else 
+   m = (l + r) / 2
+   if x <= numbers[m]  then 
+      return Binary-Search(numbers[], x, l, m) 
+   else 
+      return Binary-Search(numbers[], x, m+1, r) 
+```
+### Complexity of Binary Search
+
+## Divide and Conquer Matrix Multiplication
+Consider two matrices X and Y. We want to calculate the resultant matrix $Z=X*Y$. For the divide and conquer approach to work the matrix size should be a power of 2.
+
+The matrix is divided into sub matrices of order $n/2 * n/2$. This division should be repeated until the resulting sub-matrices are of dimensions 2x2.
+
+### Complexity
+$$
+T(n) = 
+\begin{cases}
+  b, & n=2 \\
+  8T(\frac{n}{2}) + cn^2 & n>2
+\end{cases}
+$$
+
+\begin{align}
+T(n) &= 8T(\frac{n}{2}) + cn^2 \\
+a &= 8 \\
+b &= 2 \\
+n^{log_28} &= n^3 > f(n) \\
+T(n) &= \theta(n^3)
+\end{align}
+
+
+## Strassen's Matrix Multiplication
+Strasse's Matrix Multiplication is an extension of the divide and conquer method of matrix multiplication. The only difference is how the products are calculated.
+
+Divide the matrices X, Y and Z into corresponding sub-matrices
+$$
+Z = \begin{bmatrix}I & J \\K & L \end{bmatrix} \\
+, X = \begin{bmatrix}A & B \\C & D \end{bmatrix} \\
+, Y= \begin{bmatrix}E & F \\G & H \end{bmatrix}
+$$
+
+The products are calculated as 
+\begin{align}
+P &= (A_{11} + A_{22})(B_{11} + B_{22}) \\
+Q &= (A_{21} + A_{22})B_{11} \\
+R &= A_{11}(B_{12} - B_{22}) \\
+S &= A_{22}(B_{21} - B_{11})  \\
+U &= (A_{21} - A_{11})(B_{11} + B_{12}) \\
+V &= (A_{12} - A_{22})(B_{21} + B_{22}) \\
+\\
+C_{11} &= P+S-T+V \\
+C_{12} &= R+T \\
+C_{21} &= Q+S \\
+C_{22} &= P+R-Q+U
+\end{align}
+
+### Complexity
+
+$$
+T(n) = 
+\begin{cases}
+  b, & n=2 \\
+  7T(\frac{n}{2}) + cn^2 & n>2
+\end{cases}
+$$
+
+\begin{align}
+T(n) &= 7T(\frac{n}{2}) + cn^2 \\
+n^{log_27} &= n^{2.8} > cn^2 \\
+T(n) &= \theta(n^{2.8})
+\end{align}
+
 # Greedy Strategy
 ## Minimal Cost Spanning Tree Computation
 Consider a Graph $G(V, E)$, a Spanning Tree is a Tree that contains all the vertices of G. It has no cycles, no self-loops and no parallel edges and should be minimally connected, for n vertices there should only be n-1 edges
