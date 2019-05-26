@@ -399,17 +399,18 @@ $$
 
 The products are calculated as 
 \begin{align}
-P &= (A_{11} + A_{22})(B_{11} + B_{22}) \\
-Q &= (A_{21} + A_{22})B_{11} \\
-R &= A_{11}(B_{12} - B_{22}) \\
-S &= A_{22}(B_{21} - B_{11})  \\
-U &= (A_{21} - A_{11})(B_{11} + B_{12}) \\
-V &= (A_{12} - A_{22})(B_{21} + B_{22}) \\
+P &= (A+C)(E+F) \\
+Q &= (B+D)(G+H) \\
+R &= (A-D)(E+H) \\
+S &= (A)(F-H) \\
+T &= (C+D)(E) \\
+U &= (A+B)(H) \\
+V &= (D)(G-E) \\
 \\
-C_{11} &= P+S-T+V \\
-C_{12} &= R+T \\
-C_{21} &= Q+S \\
-C_{22} &= P+R-Q+U
+I &= P+S-T+V \\
+J &= R+T \\
+K &= Q+S \\
+L &= P+R-Q+U
 \end{align}
 
 ### Complexity
@@ -427,6 +428,50 @@ T(n) &= 7T(\frac{n}{2}) + cn^2 \\
 n^{log_27} &= n^{2.8} > cn^2 \\
 T(n) &= \theta(n^{2.8})
 \end{align}
+
+$T(n) = \theta(n^{2.8})$ is lesser than the naive method of multiplication.
+
+## Dynamic Programming
+Dynamic Programming is like divide and conquer but it is applied for problems whose sub problems overlap. Dynamic programming solves the sub problems and stores the results in a table so the sub problems are not recalculated.
+
+## Bellman Ford Algorithm
+It computes the shortest path from a vertex to all other vertices in the graph. Unlike Dijkstra's algorithm it doesn't work for graph with -ve edge weights.
+
+Algorithm:
+
+Input: Graph and a source vertex src
+
+Output: Shortest distance to all vertices from src. If there is a negative weight cycle, then shortest distances are not calculated, negative weight cycle is reported.
+
+1. This step initializes distances from source to all vertices as infinite and distance to source itself as 0. Create an array `dist[]` of size |V| with all values as infinite except dist[src] where src is source vertex.
+
+2. This step calculates shortest distances. Do following |V|-1 times where |V| is the number of vertices in given graph. Do following for each edge u-v
+
+If dist[v] > dist[u] + weight of edge uv, then update dist[v]
+dist[v] = dist[u] + weight of edge uv
+
+3. This step reports if there is a negative weight cycle in graph. Do following for each edge u-v
+ff dist[v] > dist[u] + weight of edge uv, then “Graph contains negative weight cycle”
+
+The idea of step 3 is, step 2 guarantees shortest distances if graph doesn’t contain negative weight cycle. If we iterate through all edges one more time and get a shorter path for any vertex, then there is a negative weight cycle.
+
+### Complexity
+
+## Optimality Principle
+Whatever the initial state, the remaining decisions should be optimal with regard to the state following the first decision.
+
+## Optimal Matrix Multiplication 
+To multiply two matrices with dimensions $p \times q$ and $q \times r$ we need $p \times q \times r$ operations.
+
+### Matrix Chain Multiplication
+Consider three matrices A, B, C with dimensions $5\times 4, 4\times 6, 6\times 2$, the number of multiplication operations required are
+
+\begin{align}
+(A\times B)\times C &= (5*4*6)+(5*6*2) = 180 \\
+A\times (B \times C) &= (4*6*2)+(5*4*2) = 88 
+\end{align}
+
+We can reduce the number of operations by reducing the changing the order of multiplication as matrix multiplication is associative.
 
 # Greedy Strategy
 ## Minimal Cost Spanning Tree Computation
