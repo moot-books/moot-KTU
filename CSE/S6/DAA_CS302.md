@@ -474,12 +474,13 @@ A\times (B \times C) &= (4*6*2)+(5*4*2) = 88
 We can reduce the number of operations by reducing the changing the order of multiplication as matrix multiplication is associative.
 
 # Greedy Strategy
+## Fractional KnapSack Problem
 ## Minimal Cost Spanning Tree Computation
 Consider a Graph $G(V, E)$, a Spanning Tree is a Tree that contains all the vertices of G. It has no cycles, no self-loops and no parallel edges and should be minimally connected, for n vertices there should only be n-1 edges
 
 A Minimal Cost Spanning Tree is a tree where the sum of edges is minimum.
 
-### Prim's Algorithm
+## Prim's Algorithm
 Prim's Algorithm is a greedy algorithm that when given a weighted Graph=G(V,E) would output the corresponding Minimum Cost Spanning Tree.
 
 **Algorithm**
@@ -522,12 +523,37 @@ It is an extension of the generic approach where each vertex is added progressiv
 
 * (lines 8-11) Update keys and parents of nodes d, i, and f, completing step (c)
 
-The performance of Prim’s algorithm depends on how we implement the minpriority queue Q. If Q is implemented as a binary min-heap, we can use the BUILD-MIN-HEAP procedure to perform the initialization in lines 1-5 in O(V) time. The body of the while loop is executed $|V|$ times, and since each EXTRACT-MIN operation takes $|O(lg V)|$ time, the total time for all calls to EXTRACT-MIN is $|O(V lgV)|$. The for loop in lines 8-11 is executed $O(E)$ times altogether, since the sum of the lengths of all adjacency lists is $2|E|$. Within the for loop, the test for membership in Q in line 9 can be implemented in constant time by keeping a bit for each vertex that tells whether or not it is in Q, and updating the bit when the vertex is removed from Q. The assignment in line 11 involves an implicit DECREASE-KEY operation on the min-heap, which can be implemented in a binary min-heap in $O(lg V)$ time. Thus, the total time for Prim’s algorithm is $O(VlgV + ElgV) = O(ElgV)$, which is asymptotically the same as for our implementation of Kruskal’s algorithm.
-
-The asymptotic running time of Prim’s algorithm can be improved, however,
-by using Fibonacci heaps. if $|V|$ elements are organized
-into a Fibonacci heap, we can perform an EXTRACT-MIN operation in $|O(lg V)|$
-amortized time and a DECREASE-KEY operation (to implement line 11) in $O(1)$
-amortized time. Therefore, if we use a Fibonacci heap to implement the minpriority queue Q, the running time of Prim’s algorithm improves to $O(E + VlgV)$.
+## Kruskal's Algorithm
 
 # BackTracking and Complexity Theory
+## Backtracking
+Backtracking is an algorithimic technique where the solution to the problem is built recursively by building the solution incrementally removing those solutions which fail to satisfy the constraints of the problem. The desired solution can be expressed in an n-tuple $(x_1, x_2, \dots, x_n)$ where each $x_i$ is chosen from the finite set $S_i$
+
+There are two types of constraints
+
+* Explicit Constraints : They state that the solutions $x_i$ should only take on values from a given set.
+* Implicit Constraints : They are rules which determine which of the tuples in the solution space I satisfy the criteria.
+
+## N Queens Problem
+N Queens are to be placed in a $n*n$ checkboard, so that no two queens attack each other, or no two queens are present in the same row, same coloumn and same diagonal.
+
+### State Space Tree
+The tree organisation of the solution space is called as the State Space Tree. Each node in the tree defines the problem state. All paths from root to other nodes define state space of the problem.
+
+* Solution States are those problem states for which the path from root to s defines a tuple in solution space.
+* Answer States are those states for which the path from root to s satisfy the implicit constraints.
+* Live Node is a node which has been generated but it's children has not yet been generated is called as Live Node.
+* E-Node is the node whose children are currently being generated.
+* Dead Node is a generated node with all children expanded.
+
+## 0/1 KnapSack Problem
+
+## Branch and Bound 
+
+## Travelling Salesman Problem
+
+## Tractable and Intractable Problems
+
+## P and NP Classes
+
+## Polynomial Time Reducability
