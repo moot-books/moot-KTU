@@ -529,4 +529,5 @@ by using Fibonacci heaps. if $|V|$ elements are organized
 into a Fibonacci heap, we can perform an EXTRACT-MIN operation in $|O(lg V)|$
 amortized time and a DECREASE-KEY operation (to implement line 11) in $O(1)$
 amortized time. Therefore, if we use a Fibonacci heap to implement the minpriority queue Q, the running time of Prim’s algorithm improves to $O(E + VlgV)$.
+
 # BackTracking and Complexity Theory
