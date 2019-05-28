@@ -3,15 +3,6 @@ title: Design and Analysis of Algorithms
 subtitle: KTU S6 CSE CS302
 ---
 # Algorithm Analysis Techniques 
-## Syllabus
-Introduction to Algorithm AnalysisTime and Space Complexity-
-Elementary operations and Computation of Time Complexity-
-Best, worst and Average Case Complexities- Complexity
-
-Calculation of simple algorithms
-Recurrence Equations:Solution of Recurrence Equations –
-Iteration Method and Recursion Tree Methods
-
 ## Algorithm
 An Algorithm is a finite set of instructions which if followed accomplishes a particular task.
 
@@ -122,6 +113,10 @@ Average\ Case &= \frac{1+2+3+\dots+n+n}{n+1} \\
               &= \Theta(n)
 \end{align}
 
+## Recursive Functions & Recurrence Relations
+### Solution through Iterative Method
+## Recursion Tree
+Used to solve recurrence relations of divide and conquer types of algorithms like merge sort.
 
 # Master's Theorem and AVL Trees
 ## Master's Theorem
@@ -183,12 +178,31 @@ A disjoint set is a data structure that keeps track of elements partitioned into
 
 ### Operations on Disjoint Sets
 
-* `make_set(X)`
-* `find(X)`
-* `union(X, Y)`
+* `make_set(X)` : Creates a new set whose only member is X. X is also the representative of the set.
+* `find(X)` : Returns a point to the representative of the set containing X.
+* `union(X, Y)` : Creates a union of the sets containing X, Y namely $S_x$ and $S_y$ after which they are destroyed.
+
+### Applications of Disjoint Sets
+Finding out connected components of a graph.
 
 ### Linked List Implementation
+The set can be represented as a linked list with nodes containing the elements.
+
+![Disjoint Set as Linked List](./assets/cs302_disjointlinkedlist.png){#fig:disjointlinkedlist width=50%}
+
+#### Weighted Union Heuristics
+It says the smaller set should be appended at the tail of the bigger set, so the number of representative pointers to be updated will be minimum. The complexity of this operation is the number of elements in the smaller set.
+
 ### Disjoint Forest Implementation
+Representing each Disjoint set as a tree is a faster implementation compared to the linked list implementation.
+
+![Disjoint Set as Tree](./assets/cs302_disjointtree.jpeg){#fig:disjointtree width=70%}
+
+#### Union by Rank Heuristics
+The root of the tree with smaller number of nodes point to the root of the tree with the larger number of nodes.
+
+#### Path Compression
+The parent pointer of every node will be connected directly to the root representative. This reduces the height of the tree which speeds up a lot of operations.
 
 # Graphs
 Graphs are representations of set of objects called **vertices** connected by links called **edges**. It can either be directed(where on edge can only connect two vertices in one way** or undirected.
@@ -296,7 +310,7 @@ In graph theory, the shortest path problem is the problem of finding a path betw
 
 We are given a weighted network $(V, E, C)$ with node set $V$ , edge set $E$, and the weight set $C$ specifying weights $c_{ij}$ for the edges $(i, j) \in E$. We are also given a starting node $s \in V$ . The one-to-all shortest path problem is the problem of determining the shortest path from node $s$ to all the other nodes in the network.
 
-### Dijkstra’s Algorithm 
+## Dijkstra’s Algorithm 
 
 ## Topological Sorting
 The Topological ordering is an ordering of a directed graph such that for every directed edge from u to v in the graph, u should appear before v in the topological ordering.
@@ -304,7 +318,7 @@ The Topological ordering is an ordering of a directed graph such that for every 
 It is only possible in graphs without cycles, Directed Acyclic Graphs(DAG)
 
 ## Strongly Connected Components
-Connectivity in an undirected graph means each vertex can reach every other vertex via any one path. Strong Connectivity is the same as Connectivity but applied to directed graphs. In Strong Connectiviy there should be a directed edge from any one vertex to another vertex.
+Connectivity in an undirected graph means for each pair of vertices $(u,v)$ there is a path connecting u and v. In the case of directed graphs, for the same pair there should be a vertex connecting u and v and v and u.
 
 # Dynamic Programming
 ## Dynamic Programming
@@ -474,7 +488,25 @@ A\times (B \times C) &= (4*6*2)+(5*4*2) = 88
 We can reduce the number of operations by reducing the changing the order of multiplication as matrix multiplication is associative.
 
 # Greedy Strategy
+Greedy alogrithms works by taking a sequence of choices or decisions that looks the best at that moment. These decisions are taken by a selection criteria which gives an optimal solution.
+
+## Control Abstraction
+```
+Algorithm greedy(n){ 
+  //a[1:n] stores the n inputs
+  solution = null
+  
+  for i=1 to n {
+    x = select(a)
+    if feasible(solution, x)
+      solution  = union(selection, x)
+  }
+}
+```
+
 ## Fractional KnapSack Problem
+Given a knapsack of capacity m and n items. Each item i has an associated with a wieght $w_i$and a profit $p_i$ If a fraction $x_i$ is chosen the profit is given by $p_i*x_i$ and wieght $w_i$. The knapsack should be filled such that the weight does not exceed the maximum capacity and the profit is maximised.
+
 ## Minimal Cost Spanning Tree Computation
 Consider a Graph $G(V, E)$, a Spanning Tree is a Tree that contains all the vertices of G. It has no cycles, no self-loops and no parallel edges and should be minimally connected, for n vertices there should only be n-1 edges
 
