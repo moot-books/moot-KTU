@@ -32,7 +32,7 @@ rule ".pdf" => [->(f){source_for_pdf(f)}, "BOOKS"] do |t|
     sh 'pandoc ' \
       '--variable fontsize=12pt ' \
       '--variable date:"\today" ' \
-      '--variable geometry:a4paper ' \
+      '--variable geometry:"a4paper, margin=0.6in" ' \
       '--variable documentclass:book ' \
       '--table-of-contents ' \
       '--number-sections ' \
