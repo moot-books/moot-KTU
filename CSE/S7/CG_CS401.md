@@ -6,6 +6,7 @@ subtitle: KTU S7 CSE CS401
 # Basic Concepts in Computer Graphics
 
 
+
 # Primitive Drawing Algorithm
 ## Line Drawing Algorithms
 Lines are the most primitive of objects in Computer Graphics.The slope $m$ can be used to calculate the change in $x$ and $y$ using the formula.
@@ -52,5 +53,6 @@ The algorithm is as follows
 3. Calculate $\Delta x, \Delta y, 2\Delta y$ and $2\Delta y - 2\Delta x$, and obtain the starting value for the decision parameter as $p_0 = 2\Delta y - \Delta x$
 4. At each $\Delta x$ along the line starting at $k=0$, if $p_k < 0$ the next point to plot is $(x_k+1, y_k)$ and $p_{k+1} = p_k + 2\Delta y$ else the next point is $(x_k+1, y_k+1)$ and $p_{k+1}=p_k + 2\Delta y - 2\Delta x$
 5. Repeat Step 4 $\Delta x$ times
+
 
 ## Circle Drawing Algorithms
